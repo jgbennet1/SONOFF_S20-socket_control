@@ -1,6 +1,15 @@
 /* 
- *  Use NodeMCU 0.9 (ESP-12) board, 115200 flash speed 
- * 
+ This project is built to control the SONOFF® S20 10A 2200W Wifi Wireless Remote Control Socket, available from Banggood 
+ (https://www.banggood.com/SONOFF-S20-10A-2200W-Wifi-Wireless-Remote-Control-Socket-Smart-Timer-Plug-Smart-Home-Power-Socket-p-1142285.html)
+ using the Amazon hardware and the Alexa app. It allows for voice control, as well as using the manual button on the device.
+ 
+ The code is based on the work of Aruna Tennakoon (https://github.com/kakopappa/arduino-esp8266-alexa-wemo-switch), 
+ with modifications to use with the SONOFF® S20. This mostly includes the use of the physical button on the device 
+ to toggle power to the socket, along with controlling the socket with the alexa appication and Amazon hardware.
+ 
+ I was able to use the NodeMCU 0.9 (ESP-12) board, 115200 flash speed, to successfully upload to the SONOFF device.
+ 
+ 
  */
 
 #include <ESP8266WiFi.h>
@@ -9,9 +18,9 @@
 #include <functional>
 
 // setup the WiFi access and the device name for Alexa
-const char* ssid = "COSMIC";
-const char* password = "4128pendleton";
-String device_name = "Coffee Maker";
+const char* ssid = "COSMIC"; // Enter the SSID
+const char* password = "******"; // ..and passcode
+String device_name = "Coffee Maker"; // ..and the device name that will be used with Alexa
 
 void prepareIds();
 boolean connectWifi();
@@ -46,9 +55,9 @@ boolean cannotConnectToWifi = false;
 void setup() {
   Serial.begin(115200);
   
-  // Configure the button switch for input and add to an interrupt
+  // Configure the manual button switch (GPIO-0) for input, and add to an interrupt.
   pinMode(0, INPUT);
-  attachInterrupt(digitalPinToInterrupt(0), togglePwr, FALLING);
+  attachInterrupt(digitalPinToInterrupt(0), togglePwr, FALLING); // Send to togglePwr() function on button push
 
   // Setup Relay
   pinMode(relayPin, OUTPUT);
