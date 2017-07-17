@@ -1,2 +1,2 @@
 # SONOFF_S20-socket_control
-This repo is built to control the SONOFF® S20 10A 2200W Wifi Wireless Remote Control Socket.
+The code is based on the work of Aruna Tennakoon (https://github.com/kakopappa/arduino-esp8266-alexa-wemo-switch), with modifications to use with the SONOFF® S20. This mostly includes the use of the physical button on the device to toggle power to the socket, along with controlling the socket with the alexa appication and Amazon hardware.
