@@ -1,4 +1,4 @@
-/* 
+/**************************************************************************************************************** 
  This project is built to control the SONOFF® S20 10A 2200W Wifi Wireless Remote Control Socket, available from Banggood 
  (https://www.banggood.com/SONOFF-S20-10A-2200W-Wifi-Wireless-Remote-Control-Socket-Smart-Timer-Plug-Smart-Home-Power-Socket-p-1142285.html)
  using the Amazon hardware and the Alexa app. It allows for voice control, as well as using the manual button on the device.
@@ -8,9 +8,7 @@
  to toggle power to the socket, along with controlling the socket with the alexa appication and Amazon hardware.
  
  I was able to use the NodeMCU 0.9 (ESP-12) board, 115200 flash speed, to successfully upload to the SONOFF device.
- 
- 
- */
+******************************************************************************************************************/
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
